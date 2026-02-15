@@ -1,0 +1,16 @@
+const baseHtml = ({ title, body }) => {
+  return `<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>${title}</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    ${body}
+  </body>
+</html>`;
+};
+
+module.exports = baseHtml;
