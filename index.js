@@ -13,7 +13,7 @@ app.use(methodOverride("_method"));
 app.use(productRoutes);
 
 app.get("/", (req, res) => {
-  res.send("<h1>Tienda OK</h1><p>servidor levantado</p>");
+  res.redirect("/products");
 });
 
 const PORT = process.env.PORT || 3000;
