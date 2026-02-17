@@ -39,6 +39,9 @@ npm run dev
 
 - `PORT` (optional, default 3000)
 - `MONGO_URI` (MongoDB Atlas connection string)
+- `ADMIN_USER` (User)
+- `ADMIN_PASS` (Password)
+- `SESSION_SECRET` (Secret key for signing the session cookie)
 
 ## Routes (SSR)
 
@@ -57,6 +60,13 @@ npm run dev
 - `GET /dashboard/:productId/edit` → formulario editar
 - `PUT /dashboard/:productId` → actualizar producto (redirect al detalle admin)
 - `DELETE /dashboard/:productId/delete` → eliminar producto (redirect a dashboard)
+
+## Admin auth (bonus)
+
+- Login: `GET /login`
+- Logout: `GET /logout`
+- El dashboard (`/dashboard*`) está protegido por sesión.
+- Credenciales via variables de entorno: `ADMIN_USER` y `ADMIN_PASS`.
 
 ## Notes
 

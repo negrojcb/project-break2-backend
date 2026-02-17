@@ -54,7 +54,6 @@ const showProductById = async (req, res) => {
       ${getNavBar({ active: product.category, isDashboard: false })}
       <main class="container">
         <p><a href="/products">← Volver</a></p>
-
         <h1>${product.name}</h1>
         <div class="card card-narrow">
           <img src="${product.image}" alt="${product.name}">

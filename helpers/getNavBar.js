@@ -12,8 +12,9 @@ const getNavBar = ({ active = "", isDashboard = false } = {}) => {
 
   const dashboardLinks = isDashboard
     ? `<a class="nav-link" href="/dashboard/new">Nuevo producto</a>
-       <a class="nav-link" href="/dashboard">Dashboard</a>`
-    : `<a class="nav-link" href="/dashboard">Admin</a>`;
+       <a class="nav-link" href="/dashboard">Dashboard</a>
+       <a class="nav-link" href="/logout">Logout</a>`
+    : `<a class="nav-link" href="/login">Admin</a>`;
 
   return `
   <header class="nav">
