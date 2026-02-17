@@ -32,10 +32,13 @@ const showLogin = (req, res) => {
 };
 
 const login = (req, res) => {
-  const { username, password } = req.body;
+  const username = (req.body.username || "").trim();
+  const password = (req.body.password || "").trim();
 
-  const ok =
-    username === process.env.ADMIN_USER && password === process.env.ADMIN_PASS;
+  const envUser = (process.env.ADMIN_USER || "").trim();
+  const envPass = (process.env.ADMIN_PASS || "").trim();
+
+  const ok = username === envUser && password === envPass;
 
   if (!ok) {
     return res.redirect("/login?error=1");
