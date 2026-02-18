@@ -2,6 +2,10 @@ const baseHtml = require("../helpers/baseHtml");
 const getNavBar = require("../helpers/getNavBar");
 
 const showLogin = (req, res) => {
+  if (req.session?.isAdmin) {
+    return res.redirect("/dashboard");
+  }
+
   const { error } = req.query;
 
   const content = `

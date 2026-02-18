@@ -10,6 +10,8 @@ const showProducts = async (req, res) => {
     const filter = category ? { category } : {};
     const products = await Product.find(filter).lean();
 
+    const isAdmin = !!req.session?.isAdmin;
+
     const cards = products
       .map(
         (p) => `
@@ -19,13 +21,27 @@ const showProducts = async (req, res) => {
           <p>${p.description}</p>
           <p class="price">${p.price}€</p>
           <a href="/products/${p._id}">Ver detalle</a>
+          ${
+            isAdmin
+              ? `
+            <hr />
+            <p>
+              <a href="/dashboard/${p._id}/edit">Editar</a>
+            </p>
+            <form action="/dashboard/${p._id}/delete?_method=DELETE" method="POST">
+              <button type="submit">Eliminar</button>
+            </form>
+          `
+              : ""
+          }
+
         </div>
       `,
       )
       .join("");
 
     const content = `
-      ${getNavBar({ active: category || "", isDashboard: false })}
+      ${getNavBar({ active: category || "", isDashboard: isAdmin })}
       <main class="container">
         <h1>Productos</h1>
         ${products.length ? `<section class="grid">${cards}</section>` : "<p>No hay productos todavía.</p>"}
@@ -50,8 +66,10 @@ const showProductById = async (req, res) => {
     const product = await Product.findById(productId).lean();
     if (!product) return res.status(404).send("Product not found");
 
+    const isAdmin = !!req.session?.isAdmin;
+
     const content = `
-      ${getNavBar({ active: product.category, isDashboard: false })}
+      ${getNavBar({ active: product.category, isDashboard: isAdmin })}
       <main class="container">
         <p><a href="/products">← Volver</a></p>
         <h1>${product.name}</h1>
@@ -61,6 +79,19 @@ const showProductById = async (req, res) => {
           <p><strong>Categoría:</strong> ${product.category}</p>
           <p><strong>Talla:</strong> ${product.size}</p>
           <p class="price">${product.price}€</p>
+          ${
+            isAdmin
+              ? `
+          <hr />
+          <p>
+            <a href="/dashboard/${product._id}/edit">Editar</a>
+          </p>
+          <form action="/dashboard/${product._id}/delete?_method=DELETE" method="POST">
+            <button type="submit">Eliminar</button>
+          </form>
+            `
+              : ""
+          }
         </div>
       </main>
     `;
