@@ -61,6 +61,16 @@ npm run dev
 - `PUT /dashboard/:productId` → actualizar producto (redirect al detalle admin)
 - `DELETE /dashboard/:productId/delete` → eliminar producto (redirect a dashboard)
 
+## API (JSON) (bonus)
+
+Base path: `/api`
+
+- `GET /api/products` → lista de productos (soporta `?category=...`)
+- `GET /api/products/:productId` → detalle de producto
+- `POST /api/products` → crear producto (JSON body)
+- `PUT /api/products/:productId` → actualizar producto (JSON body)
+- `DELETE /api/products/:productId` → eliminar producto
+
 ## Admin auth (bonus)
 
 - Login: `GET /login`

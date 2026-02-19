@@ -5,6 +5,7 @@ const connectDB = require("./config/db");
 const productRoutes = require("./routes/productRoutes");
 const session = require("express-session");
 const authRoutes = require("./routes/authRoutes");
+const apiProductRoutes = require("./routes/apiProductRoutes");
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(methodOverride("_method"));
+app.use("/api", apiProductRoutes);
 
 app.use(
   session({
