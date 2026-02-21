@@ -71,6 +71,23 @@ Base path: `/api`
 - `PUT /api/products/:productId` → actualizar producto (JSON body)
 - `DELETE /api/products/:productId` → eliminar producto
 
+## Testing (bonus)
+
+Tests de integración de la API JSON con **Jest** + **Supertest**.
+
+### Run tests
+
+```bash
+npm test
+
+### Covered endpoints (integration tests)
+- `GET /api/products`
+- `POST /api/products`
+- `PUT /api/products/:productId`
+- `DELETE /api/products/:productId`
+
+> Note: Current tests run against the configured MongoDB database (`MONGO_URI`).
+
 ## Admin auth (bonus)
 
 - Login: `GET /login`
@@ -81,3 +98,4 @@ Base path: `/api`
 ## Notes
 
 - El campo `image` guarda una URL (por ejemplo Cloudinary) y se renderiza directamente en las vistas.
+```

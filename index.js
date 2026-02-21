@@ -33,10 +33,16 @@ app.get("/", (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 
-(async () => {
+const startServer = async () => {
   await connectDB(process.env.MONGO_URI);
 
   app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
   });
-})();
+};
+
+if (process.env.NODE_ENV !== "test") {
+  startServer();
+}
+
+module.exports = app;
