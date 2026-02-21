@@ -6,6 +6,8 @@ const productRoutes = require("./routes/productRoutes");
 const session = require("express-session");
 const authRoutes = require("./routes/authRoutes");
 const apiProductRoutes = require("./routes/apiProductRoutes");
+const swaggerUi = require("swagger-ui-express");
+const swaggerSpec = require("./config/swagger");
 
 const app = express();
 
@@ -14,6 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(methodOverride("_method"));
 app.use("/api", apiProductRoutes);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use(
   session({

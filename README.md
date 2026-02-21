@@ -61,7 +61,7 @@ npm run dev
 - `PUT /dashboard/:productId` → actualizar producto (redirect al detalle admin)
 - `DELETE /dashboard/:productId/delete` → eliminar producto (redirect a dashboard)
 
-## API (JSON) (bonus)
+## API (JSON)
 
 Base path: `/api`
 
@@ -71,7 +71,16 @@ Base path: `/api`
 - `PUT /api/products/:productId` → actualizar producto (JSON body)
 - `DELETE /api/products/:productId` → eliminar producto
 
-## Testing (bonus)
+## API Documentation (Swagger)
+
+Swagger UI available at:
+
+- Local: `/api-docs`
+- Production: `/api-docs` (on Render)
+
+Documenta y permite probar los endpoints de la API JSON de productos bajo `/api/products`
+
+## Testing
 
 Tests de integración de la API JSON con **Jest** + **Supertest**.
 
