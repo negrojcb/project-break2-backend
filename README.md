@@ -110,8 +110,3 @@ Tests de integración de la API JSON con **Jest** + **Supertest**.
 - `GET /logout` → cierre de sesión
 - Las rutas `/dashboard*` están protegidas por middleware de sesión
 - Credenciales configuradas mediante variables de entorno: `ADMIN_USER` y `ADMIN_PASS`
-
-## Notas
-
-- El campo `image` guarda una URL (por ejemplo, Cloudinary) y se renderiza directamente en las vistas.
-- La subida de imágenes con `multer + Cloudinary` puede agregarse como mejora futura (reto opcional del enunciado).
